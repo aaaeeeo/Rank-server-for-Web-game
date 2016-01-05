@@ -7,7 +7,7 @@ emailhere   https://github.com/finmily
 zuomingli@uchicago.edu  https://github.com/aaaeeeo/ 
 
 ## Project Structure    
-
+```
 ├── README.md   
 ├── gamerank        
 │   ├── __init__.py     
@@ -16,5 +16,6 @@ zuomingli@uchicago.edu  https://github.com/aaaeeeo/
 └── tests       
     ├── __init__.py     
     └── gamerank_tests.py  
+```
 
 
