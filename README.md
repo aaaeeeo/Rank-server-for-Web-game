@@ -1,9 +1,9 @@
 # Rank-server-for-Web-game
 
 ## Contributors
-Baolin Fan  
+**Baolin Fan**  
 emailhere   https://github.com/finmily  
-Zuoming Li  
+**Zuoming Li**  
 zuomingli@uchicago.edu  https://github.com/aaaeeeo/ 
 
 ## Project Structure    
