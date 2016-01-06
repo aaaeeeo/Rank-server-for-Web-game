@@ -1,4 +1,4 @@
-# encoding=utf-8
+# encoding = utf-8
 """
 Created on 2016-1-4
 @author: LZM

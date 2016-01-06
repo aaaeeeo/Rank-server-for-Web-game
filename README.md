@@ -2,9 +2,11 @@
 
 ## Contributors
 **Baolin Fan**  
-emailhere   https://github.com/finmily  
+emailhere
+https://github.com/finmily
 **Zuoming Li**  
-zuomingli@uchicago.edu  https://github.com/aaaeeeo/ 
+zuomingli@uchicago.edu
+https://github.com/aaaeeeo/
 
 ## Project Structure    
 ```

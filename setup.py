@@ -1,3 +1,9 @@
+# encoding = utf-8
+"""
+Created on 2016-1-5
+@author: LZM
+"""
+
 try:
     from setuptools import setup
 except ImportError:
@@ -13,7 +19,9 @@ config = {
     'install_requires': ['pymongo'],
     'packages': ['gamerank'],
     'scripts': [],
-    'name': 'gamerank'
+    'name': 'gamerank',
 }
 
 setup(**config)
+
+
