@@ -2,7 +2,7 @@
 
 ## Contributors
 **Baolin Fan**  
-b1457650499@qq.com   https://github.com/finmily  
+fblhalo@gmail.com   https://github.com/finmily  
 **Zuoming Li**  
 sb@uchicago.edu  https://github.com/aaaeeeo/ 
 
