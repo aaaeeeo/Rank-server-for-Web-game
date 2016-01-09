@@ -7,7 +7,7 @@
 #
 # Host: localhost (MySQL 5.7.10)
 # Database: gamerank
-# Generation Time: 2016-01-08 16:26:17 +0000
+# Generation Time: 2016-01-09 06:18:14 +0000
 # ************************************************************
 
 
@@ -72,6 +72,7 @@ CREATE TABLE `log` (
   `IP` varchar(20) NOT NULL,
   `raw_request` text,
   `notes` text,
+  `effect` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`log_id`),
   KEY `log_games_game_id_fk` (`game_id`),
   KEY `log_users_user_id_fk` (`user_id`),
@@ -82,12 +83,14 @@ CREATE TABLE `log` (
 
 DELIMITER ;;
 /*!50003 SET SESSION SQL_MODE="ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION" */;;
-/*!50003 CREATE */ /*!50017 DEFINER=`root`@`localhost` */ /*!50003 TRIGGER `log_update_score` AFTER INSERT ON `log` FOR EACH ROW begin
+/*!50003 CREATE */ /*!50017 DEFINER=`root`@`localhost` */ /*!50003 TRIGGER `log_update_score` BEFORE INSERT ON `log` FOR EACH ROW begin
 IF new.action='UPLOAD SCORE' THEN
   IF (select count(*) from highScores where game_id=new.game_id AND user_id=new.user_id) =0 THEN
     INSERT INTO highScores(user_id, game_id, score) VALUES (new.user_id, new.game_id, new.value);
+    SET new.effect=1;
   ELSEIF (select count(*) from highScores where game_id=new.game_id AND user_id=new.user_id AND score>new.value) =0 THEN
     UPDATE highScores SET score=new.value WHERE game_id=new.game_id AND user_id=new.user_id;
+    SET new.effect=2;
   END IF;
 END IF;
 end */;;
