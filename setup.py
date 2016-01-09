@@ -16,7 +16,7 @@ config = {
     'download_url': 'https://github.com/aaaeeeo/Rank-server-for-Web-game/archive/master.zip',
     'author_email': 'zuomingli@uchicago.edu',
     'version': '0.1',
-    'install_requires': ['pymongo'],
+    'install_requires': ['mysqlclient'],
     'packages': ['gamerank'],
     'scripts': [],
     'name': 'gamerank',

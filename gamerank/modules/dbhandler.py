@@ -5,12 +5,21 @@ Created on 2016-1-5
 """
 
 from config import *
-from pymongo import MongoClient
+import MySQLdb
 
 class DbHandler(object):
 
     def __init__(self):
-        self.client = MongoClient()
-        self.db = self.client.eval(DB_NAME)
-        self.coll = self.db.eval(COLL_NAME)
+        self.db = MySQLdb.connect(host=DB_HOST, port=DB_PORT, user=DB_USER, passwd=DB_PWD, db=DB_NAME)
+        self.c = self.db.cursor()
 
+if __name__ == '__main__':
+    print("run")
+    try:
+        dbh = DbHandler()
+        dbh.c.execute("select * from users")
+        print(dbh.c.fetchone())
+
+    except:
+        print("error")
+    pass
