@@ -59,7 +59,7 @@ CREATE TABLE `highScores` (
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `valid` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`user_id`,`game_token`),
-  KEY `highScore_games_game_id_fk` (`game_token`),
+  KEY `highScore_games_game_token_fk` (`game_token`),
   CONSTRAINT `highScores_games_game_token_fk` FOREIGN KEY (`game_token`) REFERENCES `games` (`game_token`),
   CONSTRAINT `highScores_users_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -97,7 +97,7 @@ CREATE TABLE `log` (
   `notes` text,
   `effect` int(3) NOT NULL DEFAULT '0',
   PRIMARY KEY (`log_id`),
-  KEY `log_games_game_id_fk` (`game_token`),
+  KEY `log_games_game_token_fk` (`game_token`),
   KEY `log_users_user_id_fk` (`user_id`),
   CONSTRAINT `log_games_game_token_fk` FOREIGN KEY (`game_token`) REFERENCES `games` (`game_token`),
   CONSTRAINT `log_users_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
