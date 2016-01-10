@@ -15,7 +15,7 @@ def get_rank(dbh, paras):
         __log(dbh, paras["gametoken"], paras["userid"], "GET RANK",
           0, paras["IP"], paras["rawrequest"])
         dbh.db.commit()
-        dbh.c.execute("SELECT * FROM RANK WHERE game_token=%s",
+        dbh.c.execute("SELECT * FROM rank WHERE game_token=%s",
                   (paras["gametoken"],))
         return dbh.c.fetchall()
     except MySQLdb.Error as e:
