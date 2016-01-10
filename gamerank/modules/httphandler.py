@@ -78,6 +78,14 @@ class HTTPHandler(BaseHTTPRequestHandler):
             self.__dbh.connect()
         return self.__dbh
 
+    def __append_head(self, dict):
+        ip = "%s:%s" % (self.client_address[0], self.client_address[1])
+        raw = "" + str(self.client_address)+"\t\n" + str(self.requestline)+"\t\n" + str(self.request)+"\t\n" + str(self.headers)
+        dict["IP"]=ip
+        dict["rawrequest"]=raw
+        #print(dict)
+        return dict
+
     def __prepare_response(self, dict):
         return json.dumps(dict)
 
@@ -87,6 +95,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
             self.__response(404)
         else:
             paras = self.__resolve_paras(type)
+            paras = self.__append_head(paras)
             dbh = self.__get_dbh()
             res_dict = eval(ctl)(dbh, paras)
             res_json = self.__prepare_response(res_dict)
