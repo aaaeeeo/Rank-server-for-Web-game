@@ -9,12 +9,12 @@ HTTP_HOST = ""
 HTTP_PORT = 80
 
 # Route
-ROUTE_DEF = [
-    ("POST", "upload_score.lol", "upload_score"),
-    ("GET",  "get_rank.lol", "get_rank"),
-    ("POST", "login.lol", "login"),
-    ("POST", "create_user.lol", "create_user")
-]
+ROUTE_DEF = {
+    "/upload_score.lol": ("POST", "upload_score"),
+    "/get_rank.lol": ("GET", "get_rank"),
+    "/login.lol": ("POST", "login"),
+    "/create_user.lol": ("POST", "create_user")
+}
 
 # DB
 DB_HOST = "localhost"

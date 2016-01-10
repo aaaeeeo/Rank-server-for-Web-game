@@ -11,8 +11,9 @@ import MySQLdb
 
 def get_rank(dbh, paras):
     try:
-        __log(dbh, paras["gameid"], paras["userid"], "GET RANK",
-          0, paras["IP"], paras["rawrequest"])
+        print(paras)
+        #__log(dbh, paras["gameid"], paras["userid"], "GET RANK",
+        #  0, paras["IP"], paras["rawrequest"])
         dbh.c.execute("SELECT * FROM RANK WHERE game_id=%s",
                   (paras["gameid"],))
         return dbh.c.fetchall()

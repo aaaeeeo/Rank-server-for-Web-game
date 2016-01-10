@@ -20,6 +20,21 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+# Dump of table users
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `user_id` char(28) NOT NULL,
+  `user_name` varchar(20) NOT NULL,
+  `disabled` tinyint(1) NOT NULL DEFAULT '0',
+  `head_image` text NOT NULL,
+  `register_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
 # Dump of table games
 # ------------------------------------------------------------
 
@@ -111,24 +126,6 @@ CREATE TABLE `rank` (
    `score` INT(11) NULL DEFAULT NULL,
    `head_image` TEXT NOT NULL
 ) ENGINE=MyISAM;
-
-
-
-# Dump of table users
-# ------------------------------------------------------------
-
-DROP TABLE IF EXISTS `users`;
-
-CREATE TABLE `users` (
-  `user_id` char(28) NOT NULL,
-  `user_name` varchar(20) NOT NULL,
-  `disabled` tinyint(1) NOT NULL DEFAULT '0',
-  `head_image` text NOT NULL,
-  `register_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
 
 
 
