@@ -96,7 +96,7 @@ def transDicts(params):
 if __name__=='__main__':
 
     try:
-        server = MyThreadingHTTPServer(('', 8000), MyRequestHandler)
+        server = MyThreadingHTTPServer(('', 80), MyRequestHandler)
         print('started httpserver...')
         server.serve_forever()
 
