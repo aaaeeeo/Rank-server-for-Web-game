@@ -4,7 +4,7 @@ Created on 2016-1-10
 @author: LZM
 """
 
-from modules.config import *
+from config import *
 from modules import dbhandler
 import MySQLdb
 

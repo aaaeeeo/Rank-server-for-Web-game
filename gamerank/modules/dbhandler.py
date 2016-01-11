@@ -4,7 +4,7 @@ Created on 2016-1-5
 @author: LZM
 """
 
-from modules.config import *
+from config import *
 import MySQLdb
 
 class DbHandler(object):

@@ -5,16 +5,21 @@ Created on 2016-1-5
 """
 
 from modules.httphandler import *
-from modules.config import *
+from config import *
 
 if __name__ == '__main__':
 
+    print("**************************************************")
+    print("** GAMERANK webgame ranking server  VERSION 1.0 **")
+    print("**        Authur: Zuoming Li, Baolin Fan        **")
+    print("**************************************************")
     try:
         server = ThreadingHTTPServer(('', HTTP_PORT), HTTPHandler)
-        print('started httpserver...')
+        print('GAMERANK server running...')
+        print("Listening on: "+server.server_address[0]+":"+str(server.server_address[1]))
         server.serve_forever()
 
     except KeyboardInterrupt:
-        server.socket.close()
+        server.shutdown()
 
     pass

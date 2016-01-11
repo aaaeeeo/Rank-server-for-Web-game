@@ -19,7 +19,7 @@ ROUTE_DEF = {
     "/create_user.lol": ("POST", "create_user")
 }
 
-STATIC_DIR = "pages"
+WEB_ROOT = "pages"
 
 TYPE_DEF = {
     '.html': 'text/html',

@@ -4,7 +4,8 @@ Created on 2016-1-5
 @author: LZM
 """
 
-from modules.config import *
+from config import *
+from modules.pathhelper import *
 from modules.controller import *
 from modules import dbhandler
 
@@ -43,7 +44,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
             return ""
 
     def __resolve_route(self, type):
-        print(self.path)
+        #print(self.path)
         route = self.__split_route()
 
         if route in ROUTE_DEF.keys():
@@ -52,9 +53,9 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return -1
 
     def __static_dir(self):
-        root_path = os.path.abspath(os.path.dirname('httphandler.py'))
-        #print(root_path)
-        return root_path
+        static_path = WEB_PATH
+        #print(static_path)
+        return static_path
 
     def __resolve_paras(self, type):
         if type == "GET":
@@ -102,8 +103,8 @@ class HTTPHandler(BaseHTTPRequestHandler):
     def __append_head(self, dict):
         ip = "%s:%s" % (self.client_address[0], self.client_address[1])
         raw = "" + str(self.client_address)+"\t\n" + str(self.requestline)+"\t\n" + str(self.request)+"\t\n" + str(self.headers)
-        dict["IP"]=ip
-        dict["raw_request"]=raw
+        dict["IP"] = ip
+        dict["raw_request"] = raw
         #print(dict)
         return dict
 
@@ -115,8 +116,8 @@ class HTTPHandler(BaseHTTPRequestHandler):
         content_type = TYPE_DEF[ext_name]
         #print(ext_name)
         #print(content_type)
-        root_path = self.__static_dir()
-        path = root_path + "/" + STATIC_DIR + self.__split_route()
+        static_path = self.__static_dir()
+        path = static_path + self.__split_route()
         print(path)
         try:
             content_data = open(path).read()
@@ -131,7 +132,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         if ctl == -1:
             try:
                 static = self.__get_static()
-                #print(html_text)
+                print(static[1:])
                 self.__response(200, static[0], static[1], static[2])
             except:
                 self.__response(404, "File not found")
@@ -152,6 +153,7 @@ if __name__ == '__main__':
     try:
         server = ThreadingHTTPServer(('', 80), HTTPHandler)
         print('started httpserver...')
+        print(server.server_address)
         server.serve_forever()
 
     except KeyboardInterrupt:
