@@ -4,9 +4,9 @@ Created on 2016-1-5
 @author: LZM
 """
 
-from config import *
-from controller import *
-import dbhandler
+from modules.config import *
+from modules.controller import *
+from modules import dbhandler
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import io, shutil
@@ -46,7 +46,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return -1
 
     def __static_dir(self):
-        root_path = os.path.abspath(os.path.join(os.path.dirname('httphandler.py'), os.path.pardir))
+        root_path = os.path.abspath(os.path.dirname('httphandler.py'))
         #print(root_path)
         return root_path
 

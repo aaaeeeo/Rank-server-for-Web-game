@@ -4,8 +4,8 @@ Created on 2016-1-10
 @author: LZM
 """
 
-from config import *
-import dbhandler
+from modules.config import *
+from modules import dbhandler
 import MySQLdb
 
 

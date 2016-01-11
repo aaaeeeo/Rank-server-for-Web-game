@@ -15,8 +15,8 @@ HTTP_PORT = 80
 ROUTE_DEF = {
     "/upload_score.lol": ("POST", "upload_score"),
     "/get_rank.lol": ("GET", "get_rank"),
-    "/login.lol": ("GET", "login"),
-    "/create_user.lol": ("GET", "create_user")
+    "/login.lol": ("POST", "login"),
+    "/create_user.lol": ("POST", "create_user")
 }
 
 STATIC_DIR = "pages"

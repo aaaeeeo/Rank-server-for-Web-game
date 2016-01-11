@@ -4,8 +4,8 @@ Created on 2016-1-5
 @author: LZM
 """
 
-from config import *
-import model
+from modules.config import *
+from modules import model
 
 
 def get_rank(dbh, paras):
