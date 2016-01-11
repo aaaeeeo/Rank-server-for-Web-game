@@ -9,7 +9,7 @@ ENCODING = "UTF8"
 
 # HTTP
 HTTP_HOST = ""
-HTTP_PORT = 80
+HTTP_PORT = 8000
 
 # Route
 ROUTE_DEF = {
@@ -22,13 +22,13 @@ ROUTE_DEF = {
 STATIC_DIR = "pages"
 
 TYPE_DEF = {
-    '.html':'text/html',
-    '.htm':'text/html',
-    '.css':'text/css',
-    '.js':'application/x-javascript',
-    '.ico':'image/x-icon',
-    '.jpg':'image/jpeg',
-    '.jpeg':'image/jpeg'
+    '.html': 'text/html',
+    '.htm': 'text/html',
+    '.css': 'text/css',
+    '.js': 'application/x-javascript',
+    '.ico': 'image/x-icon',
+    '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg'
 }
 
 # DB
