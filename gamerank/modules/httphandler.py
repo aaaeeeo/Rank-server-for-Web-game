@@ -13,6 +13,7 @@ import io, shutil
 import socketserver
 import json
 import urllib
+import os
 
 class ThreadingHTTPServer(socketserver.ThreadingMixIn, HTTPServer):
     pass
@@ -44,6 +45,11 @@ class HTTPHandler(BaseHTTPRequestHandler):
                 return ROUTE_DEF[route][1]
         return -1
 
+    def __static_dir(self):
+        root_path = os.path.abspath(os.path.join(os.path.dirname('settings.py'), os.path.pardir))
+        #print(root_path)
+        return root_path
+
     def __resolve_paras(self, type):
         if type == "GET":
             url_paras = self.__split_paras()
@@ -60,10 +66,13 @@ class HTTPHandler(BaseHTTPRequestHandler):
             return dict_datas
 
     def __response(self, code, content=""):
-        self.send_response(code)
+
         if code == 200:
-            enc="UTF-8"
+            self.send_response(code)
+            enc = ENCODING
+            #print(content)
             content = content.encode(enc)
+            #print(content)
             f = io.BytesIO()
             f.write(content)
             f.seek(0)
@@ -71,6 +80,8 @@ class HTTPHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", str(len(content)))
             self.end_headers()
             shutil.copyfileobj(f,self.wfile)
+        else:
+            self.send_error(code,content)
 
     def __get_dbh(self):
         if self.__dbh is None:
@@ -87,19 +98,32 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return dict
 
     def __prepare_response(self, dict):
-        return json.dumps(dict)
+        return json.dumps(dict, ensure_ascii=False)
+
+    def __get_static(self):
+        root_path = self.__static_dir()
+        path = root_path + "/" + STATIC_DIR + self.__split_route()
+        print(path)
+        all_the_text = open(path).read( )
+        return all_the_text
 
     def process(self, type):
         ctl = self.__resolve_route(type)
         if ctl == -1:
-            self.__response(404)
+            try:
+                html_text = self.__get_static()
+                #print(html_text)
+                self.__response(200, html_text)
+            except:
+                self.__response(404, "File not found")
         else:
             paras = self.__resolve_paras(type)
             paras = self.__append_head(paras)
             dbh = self.__get_dbh()
             res_dict = eval(ctl)(dbh, paras)
             res_json = self.__prepare_response(res_dict)
-            print(res_dict)
+            #print(res_dict)
+            print(res_json)
             content = res_json
             self.__response(200, content)
 

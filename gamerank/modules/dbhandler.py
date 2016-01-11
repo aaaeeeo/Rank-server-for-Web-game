@@ -14,7 +14,7 @@ class DbHandler(object):
         self.c = None
 
     def connect(self):
-        self.db = MySQLdb.connect(host=DB_HOST, port=DB_PORT, user=DB_USER, passwd=DB_PWD, db=DB_NAME)
+        self.db = MySQLdb.connect(host=DB_HOST, port=DB_PORT, user=DB_USER, passwd=DB_PWD, db=DB_NAME, charset=ENCODING)
         self.c = self.db.cursor()
 
     def disconnect(self):

@@ -22,7 +22,7 @@ def create_user(dbh, paras):
 
 def login(dbh, paras):
     t = model.login(dbh, paras)
-    print(t)
+    #print(t)
     res = dict()
     if t is -1:
         res['success']=False

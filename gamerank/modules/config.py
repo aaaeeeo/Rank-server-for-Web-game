@@ -4,6 +4,9 @@ Created on 2016-1-5
 @author: LZM
 """
 
+# Genernal
+ENCODING = "UTF8"
+
 # HTTP
 HTTP_HOST = ""
 HTTP_PORT = 80
@@ -15,6 +18,8 @@ ROUTE_DEF = {
     "/login.lol": ("GET", "login"),
     "/create_user.lol": ("GET", "create_user")
 }
+
+STATIC_DIR = "pages"
 
 # DB
 DB_HOST = "localhost"
