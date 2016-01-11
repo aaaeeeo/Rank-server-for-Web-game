@@ -31,10 +31,16 @@ class HTTPHandler(BaseHTTPRequestHandler):
         self.process("POST")
 
     def __split_route(self):
-        return urllib.parse.unquote(self.path.split('?', 1)[0])
+        if '?' in self.path:
+            return urllib.parse.unquote(self.path.split('?', 1)[0])
+        else:
+            return self.path
 
     def __split_paras(self):
-        return urllib.parse.unquote(self.path.split('?', 1)[1])
+        if '?' in self.path:
+            return urllib.parse.unquote(self.path.split('?', 1)[1])
+        else:
+            return ""
 
     def __resolve_route(self, type):
         print(self.path)
@@ -93,7 +99,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         ip = "%s:%s" % (self.client_address[0], self.client_address[1])
         raw = "" + str(self.client_address)+"\t\n" + str(self.requestline)+"\t\n" + str(self.request)+"\t\n" + str(self.headers)
         dict["IP"]=ip
-        dict["rawrequest"]=raw
+        dict["raw_request"]=raw
         #print(dict)
         return dict
 

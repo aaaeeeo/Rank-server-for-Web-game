@@ -12,12 +12,12 @@ import MySQLdb
 def get_rank(dbh, paras):
     try:
         #print(paras)
-        __log(dbh, paras["gametoken"], paras["userid"], "GET RANK",
-          0, paras["IP"], paras["rawrequest"])
+        __log(dbh, paras["game_token"], paras["user_id"], "GET RANK",
+          0, paras["IP"], paras["raw_request"])
         dbh.db.commit()
-        dbh.c.execute("SELECT * FROM rank WHERE game_token=%s",
-                  (paras["gametoken"],))
-        return dbh.c.fetchall()
+        dbh.dictc.execute("SELECT * FROM rank WHERE game_token=%s",
+                  (paras["game_token"],))
+        return dbh.dictc.fetchall()
     except MySQLdb.Error as e:
         __error_handle(e, dbh)
         return -1
@@ -25,8 +25,8 @@ def get_rank(dbh, paras):
 
 def upload_score(dbh, paras):
     try:
-        __log(dbh, paras["gametoken"], paras["userid"], "UPLOAD SCORE",
-              paras["score"], paras["IP"], paras["rawrequest"])
+        __log(dbh, paras["game_token"], paras["user_id"], "UPLOAD SCORE",
+              paras["score"], paras["IP"], paras["raw_request"])
         dbh.db.commit()
         return 1
     except MySQLdb.Error as e:
@@ -38,9 +38,9 @@ def create_user(dbh, paras):
     try:
         dbh.c.execute("INSERT INTO users(user_id, user_name, head_image) "
                   "VALUES (%s,%s,%s)",
-                  (paras["userid"], paras["username"], paras["headimage"]))
-        __log(dbh, paras["gametoken"], paras["userid"], "CREATE USER",
-          0, paras["IP"], paras["rawrequest"])
+                  (paras["user_id"], paras["user_name"], paras["head_image"]))
+        __log(dbh, paras["game_token"], paras["user_id"], "CREATE USER",
+          0, paras["IP"], paras["raw_request"])
         dbh.db.commit()
         return 1
     except MySQLdb.Error as e:
@@ -50,18 +50,18 @@ def create_user(dbh, paras):
 
 def login(dbh, paras):
     try:
-        __log(dbh, paras["gametoken"], paras["userid"], "LOGIN",
-          0, paras["IP"], paras["rawrequest"])
+        __log(dbh, paras["game_token"], paras["user_id"], "LOGIN",
+          0, paras["IP"], paras["raw_request"])
         dbh.db.commit()
         dbh.c.execute("SELECT user_id, user_name, head_image FROM users "
                       "WHERE user_id=%s AND disabled=1",
-                      (paras["userid"],))
+                      (paras["user_id"],))
         if len(dbh.c.fetchall()) is not 0:
             return 2
         else:
             dbh.c.execute("SELECT user_id, user_name, head_image FROM users "
                           "WHERE user_id=%s AND disabled=0",
-                          (paras["userid"],))
+                          (paras["user_id"],))
             res=dbh.c.fetchall()
             if len(res) is 0:
                 return 0
@@ -72,14 +72,14 @@ def login(dbh, paras):
         return -1
 
 
-def __log(dbh, gametoken, userid, action, value, IP, rawrequest, level=0, notes=""):
+def __log(dbh, game_token, user_id, action, value, IP, raw_request, level=0, notes=""):
     try:
         sql="INSERT INTO log(game_token, user_id, action, value, IP, raw_request, level, notes) " \
-            "VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"%(gametoken,userid,action,value,IP,rawrequest,level,notes)
+            "VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"%(game_token,user_id,action,value,IP,raw_request,level,notes)
         #print(sql)
         dbh.c.execute("INSERT INTO log(game_token, user_id, action, value, IP, raw_request, level, notes) "
                       "VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
-                      (gametoken[0],userid[0],action,value,IP,rawrequest,level,notes))
+                      (game_token[0],user_id[0],action,value,IP,raw_request,level,notes))
         return 1
     except MySQLdb.Error as e:
         __error_handle(e, dbh)
