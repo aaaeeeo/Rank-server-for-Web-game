@@ -11,7 +11,7 @@ ENCODING = "UTF8"
 HTTP_HOST = ""
 HTTP_PORT = 8000
 
-# Route
+# Dynamic Route
 ROUTE_DEF = {
     "/upload_score.lol": ("POST", "upload_score"),
     "/get_rank.lol": ("GET", "get_rank"),
@@ -19,8 +19,8 @@ ROUTE_DEF = {
     "/create_user.lol": ("POST", "create_user")
 }
 
+# Static Route
 WEB_ROOT = "pages"
-
 TYPE_DEF = {
     '.html': 'text/html',
     '.htm': 'text/html',
@@ -32,6 +32,7 @@ TYPE_DEF = {
 }
 
 # DB
+DB_TYPE = "mysql"
 DB_HOST = "localhost"
 DB_PORT = 3307
 DB_USER = "root"
