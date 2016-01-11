@@ -71,18 +71,22 @@ class HTTPHandler(BaseHTTPRequestHandler):
             print(dict_datas)
             return dict_datas
 
-    def __response(self, code, content=""):
+    def __response(self, code, content="", type="text/html", btype='text'):
 
         if code == 200:
             self.send_response(code)
             enc = ENCODING
             #print(content)
-            content = content.encode(enc)
-            #print(content)
+
+            if btype is 'text':
+                content = content.encode(enc)
+                self.send_header("Content-type", "%s; charset=%s" % (type, enc))
+            else:
+                self.send_header("Content-type", "%s" % type)
+
             f = io.BytesIO()
             f.write(content)
             f.seek(0)
-            self.send_header("Content-type", "text/html; charset=%s" % enc)
             self.send_header("Content-Length", str(len(content)))
             self.end_headers()
             shutil.copyfileobj(f,self.wfile)
@@ -107,19 +111,28 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return json.dumps(dict, ensure_ascii=False)
 
     def __get_static(self):
+        ext_name = self.path[self.path.rfind('.'):]
+        content_type = TYPE_DEF[ext_name]
+        #print(ext_name)
+        #print(content_type)
         root_path = self.__static_dir()
         path = root_path + "/" + STATIC_DIR + self.__split_route()
         print(path)
-        all_the_text = open(path).read( )
-        return all_the_text
+        try:
+            content_data = open(path).read()
+            type='text'
+        except:
+            content_data = open(path,'rb').read()
+            type='binary'
+        return content_data, content_type, type
 
     def process(self, type):
         ctl = self.__resolve_route(type)
         if ctl == -1:
             try:
-                html_text = self.__get_static()
+                static = self.__get_static()
                 #print(html_text)
-                self.__response(200, html_text)
+                self.__response(200, static[0], static[1], static[2])
             except:
                 self.__response(404, "File not found")
         else:
@@ -131,7 +144,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
             #print(res_dict)
             print(res_json)
             content = res_json
-            self.__response(200, content)
+            self.__response(200, content, "application/json", 'text')
 
 
 if __name__ == '__main__':

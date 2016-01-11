@@ -50,6 +50,7 @@ def create_user(dbh, paras):
 
 def login(dbh, paras):
     try:
+        print(paras["user_id"])
         __log(dbh, paras["game_token"], paras["user_id"], "LOGIN",
           0, paras["IP"], paras["raw_request"])
         dbh.db.commit()
@@ -79,7 +80,7 @@ def __log(dbh, game_token, user_id, action, value, IP, raw_request, level=0, not
         #print(sql)
         dbh.c.execute("INSERT INTO log(game_token, user_id, action, value, IP, raw_request, level, notes) "
                       "VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
-                      (game_token[0],user_id[0],action,value,IP,raw_request,level,notes))
+                      (game_token,user_id,action,value,IP,raw_request,level,notes))
         return 1
     except MySQLdb.Error as e:
         __error_handle(e, dbh)

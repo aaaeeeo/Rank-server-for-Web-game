@@ -37,9 +37,9 @@ def login(dbh, paras):
         res['success']=True
         res['isexist']=True
         res['disabled']=False
-        res['userid']=t[0]
-        res['username']=t[1]
-        res['headimage']=t[2]
+        res['user_id']=t[0]
+        res['user_name']=t[1]
+        res['head_image']=t[2]
     return res
 
 
