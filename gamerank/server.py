@@ -14,8 +14,8 @@ if __name__ == '__main__':
     print("**        Authur: Zuoming Li, Baolin Fan        **")
     print("**************************************************")
     try:
-        server = ThreadingHTTPServer(('', HTTP_PORT), HTTPHandler)
-        print('GAMERANK server running...')
+        server = ThreadingHTTPServer((HTTP_HOST, HTTP_PORT), HTTPHandler)
+        print('Server running...')
         print("Listening on: "+server.server_address[0]+":"+str(server.server_address[1]))
         server.serve_forever()
 

@@ -9,7 +9,7 @@ ENCODING = "UTF8"
 
 # HTTP
 HTTP_HOST = ""
-HTTP_PORT = 8000
+HTTP_PORT = 80
 
 # Dynamic Route
 ROUTE_DEF = {
