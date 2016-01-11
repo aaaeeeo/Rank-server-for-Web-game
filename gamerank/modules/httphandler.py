@@ -46,7 +46,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return -1
 
     def __static_dir(self):
-        root_path = os.path.abspath(os.path.join(os.path.dirname('settings.py'), os.path.pardir))
+        root_path = os.path.abspath(os.path.join(os.path.dirname('httphandler.py'), os.path.pardir))
         #print(root_path)
         return root_path
 
@@ -131,7 +131,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
 if __name__ == '__main__':
 
     try:
-        server = ThreadingHTTPServer(('', 8000), HTTPHandler)
+        server = ThreadingHTTPServer(('', 80), HTTPHandler)
         print('started httpserver...')
         server.serve_forever()
 
