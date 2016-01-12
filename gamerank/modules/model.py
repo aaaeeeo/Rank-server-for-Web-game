@@ -74,17 +74,11 @@ def login(dbh, paras):
 
 
 def __log(dbh, game_token, user_id, action, value, IP, raw_request, level=0, notes=""):
-    try:
-        sql="INSERT INTO log(game_token, user_id, action, value, IP, raw_request, level, notes) " \
-            "VALUES(%s,%s,%s,%s,%s,%s,%s,%s)"%(game_token,user_id,action,value,IP,raw_request,level,notes)
-        #print(sql)
-        dbh.c.execute("INSERT INTO log(game_token, user_id, action, value, IP, raw_request, level, notes) "
-                      "VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
-                      (game_token,user_id,action,value,IP,raw_request,level,notes))
-        return 1
-    except MySQLdb.Error as e:
-        __error_handle(e, dbh)
-        return -1
+
+    dbh.c.execute("INSERT INTO log(game_token, user_id, action, value, IP, raw_request, level, notes) "
+                  "VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",
+                  (game_token,user_id,action,value,IP,raw_request,level,notes))
+
 
 
 def __error_handle(e, dbh):

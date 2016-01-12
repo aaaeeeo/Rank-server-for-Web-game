@@ -9,7 +9,7 @@ from modules import model
 
 
 def get_rank(dbh, paras):
-    return model.get_rank(dbh, paras)
+    return __error_response(model.get_rank(dbh, paras))
 
 
 def upload_score(dbh, paras):
@@ -50,6 +50,15 @@ def __success_response(t):
     elif t is -1:
         res['success']=False
     return res
+
+
+def __error_response(t):
+    res = dict()
+    if t is -1:
+        res['error'] = True
+        return res
+    else:
+        return t
 
 if __name__ == '__main__':
     print("run")

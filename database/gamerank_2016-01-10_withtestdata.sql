@@ -92,7 +92,7 @@ CREATE TABLE `log` (
   `level` int(11) NOT NULL DEFAULT '0',
   `action` varchar(50) NOT NULL,
   `value` int(11) DEFAULT NULL,
-  `IP` varchar(20) NOT NULL,
+  `IP` varchar(30) NOT NULL,
   `raw_request` text,
   `notes` text,
   `effect` int(3) NOT NULL DEFAULT '0',
