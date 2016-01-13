@@ -39,9 +39,9 @@ def create_user(dbh, paras):
         dbh.c.execute("INSERT INTO users(user_id, user_name, head_image) "
                   "VALUES (%s,%s,%s)",
                   (paras["user_id"], paras["user_name"], paras["head_image"]))
-        dbh.db.commit()
-        __log(dbh, paras["game_token"], paras["user_id"], "CREATE USER",
-          0, paras["IP"], paras["raw_request"])
+        #dbh.db.commit()
+        #__log(dbh, paras["game_token"], paras["user_id"], "CREATE USER",
+        #  0, paras["IP"], paras["raw_request"])
         dbh.db.commit()
         return 1
     except MySQLdb.Error as e:
