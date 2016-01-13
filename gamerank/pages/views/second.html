@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>title</title>
     <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
-    <script src="/javascripts/rank.js"></script>
 <script type="text/javascript">
     var username;
     var headimg;
@@ -12,7 +11,7 @@
         (function() {
             WgateJs = {};
             WgateJs.auto_auth=true;
-            WgateJs.gate_options={force:1,info:"basic"};
+            WgateJs.gate_options={force:1,info:"none"};
             WgateJs.ready=function(){
                 var wgateid=WgateJs.getWgateid();
                 //WgateJs.getWgateUser(function(user){alert(user)});
