@@ -18,9 +18,11 @@
                 //alert(wgateid);
                 $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
                     if(data.isexist){
-                        username = data.username;
-                            headimg = data.headimage;
+                        username = data.user_name;
+                            headimg = data.head_image;
+				alert(username);
                             document.getElementById('headimg').src=headimg;
+			    document.getElementById('name').innerText = username;
                             disable = data.disable;
                     }else{
                         createUser();
@@ -35,7 +37,7 @@
             g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
         })(); 
         function createUser(){
-            alert("createUser()");
+           // alert("createUser()");
         WgateJs = {};
             WgateJs.auto_auth=true;
             WgateJs.gate_options={force:1,info:"force"};
@@ -43,6 +45,7 @@
                 wgateid=WgateJs.getWgateid();
                             WgateJs.getWgateUser(function(user){
                                 document.getElementById('headimg').src=user.headimgurl;
+                                document.getElementById('name').innerText = user.nickname;
                                 $.post('/create_user.lol',JSON.stringify({user_id: wgateid,game_token:1,user_name:user.nickname,head_image:user.headimgurl}),function(data){
                                     //if(data)
                                 })
@@ -57,7 +60,7 @@
     </script>
 </head>
 <body>
-this is the second Page::
+this is the second Page: <span id="name"></span>
 <img id='headimg'>
 </body>
 <script>
