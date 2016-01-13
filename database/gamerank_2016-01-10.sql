@@ -129,19 +129,12 @@ CREATE TABLE `users` (
 
 
 
-
 # Replace placeholder table for rank with correct view syntax
 # ------------------------------------------------------------
 
 DROP TABLE `rank`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rank` AS (select `x`.`game_token` AS `game_token`,`x`.`rank` AS `rank`,`x`.`user_id` AS `user_id`,`users`.`user_name` AS `user_name`,`x`.`score` AS `score`,`users`.`head_image` AS `head_image` from ((select `a`.`user_id` AS `user_id`,`a`.`game_token` AS `game_token`,`a`.`score` AS `score`,((select count(`highScores
-`.`score`) from `highScores
-` where ((`highScores
-`.`score` > `a`.`score`) and (`highScores
-`.`game_token` = `a`.`game_token`) and (`highScores
-`.`valid` = TRUE))) + 1) AS `rank` from `highScores
-` `a` where (`a`.`valid` = TRUE)) `x` join `users`) where (`users`.`user_id` = `x`.`user_id`) order by `x`.`game_token`,`x`.`rank`);
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `rank` AS (select `x`.`game_token` AS `game_token`,`x`.`rank` AS `rank`,`x`.`user_id` AS `user_id`,`users`.`user_name` AS `user_name`,`x`.`score` AS `score`,`users`.`head_image` AS `head_image` from ((select `a`.`user_id` AS `user_id`,`a`.`game_token` AS `game_token`,`a`.`score` AS `score`,((select count(`highScores`.`score`) from `highScores` where ((`highScores`.`score` > `a`.`score`) and (`highScores`.`game_token` = `a`.`game_token`) and (`highScores`.`valid` = TRUE))) + 1) AS `rank` from `highScores` `a` where (`a`.`valid` = TRUE)) `x` join `users`) where (`users`.`user_id` = `x`.`user_id`) order by `x`.`game_token`,`x`.`rank`);
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
