@@ -15,19 +15,26 @@
             WgateJs.gate_options={force:1,info:"basic"};
             WgateJs.ready=function(){
                 var wgateid=WgateJs.getWgateid();
-                WgateJs.getWgateUser(function(user){alert(user)});
-
+                //WgateJs.getWgateUser(function(user){alert(user)});
                 //alert(wgateid);
                 $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
                     if(data.isexist){
                         username = data.user_name;
                             headimg = data.head_image;
-				alert(username);
+				        alert(username);
                             document.getElementById('headimg').src=headimg;
 			    document.getElementById('name').innerText = username;
                             disable = data.disable;
                     }else{
-                        createUser();
+                        WgateJs.getWgateUser(function(user){
+                    if(user==null)
+                        window.location.href = "http://www.weixingate.com/gate.php?back=http://scut.win/views/second.html&force=1&info=force";
+                    document.getElementById('headimg').src=user.headimgurl;
+                    document.getElementById('name').innerText = user.nickname;
+                    $.post('/create_user.lol',JSON.stringify({user_id: wgateid,game_token:1,user_name:user.nickname,head_image:user.headimgurl}),function(data){
+                        //if(data)
+                    })
+                })
                     }
                 })
                 //WgateJs.getWgateUser(function(user){console.info(user);alert(user)});
@@ -37,7 +44,8 @@
             u=u+'st/1947';//注意每个site这里的数字不一样
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
             g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
-        })(); 
+        })();
+    /*
         function createUser(){
            // alert("createUser()");
         WgateJs = {};
@@ -61,7 +69,7 @@
             u=u+'st/1947';//注意每个site这里的数字不一样
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
             g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
-    }   
+    }   */
     </script>
 </head>
 <body>
