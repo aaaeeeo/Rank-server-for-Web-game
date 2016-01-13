@@ -5,7 +5,7 @@ function firstpage() {
     //alert(window.location.href);
     //window.location.href = "http://www.baidu.com"; pass
     //window.location.href = "http://www.weixingate.com/gate.php?back=http://www.baidu.com&force=1&info=none";
-    window.location.href = "http://www.weixingate.com/gate.php?back=http://scut.win/views/second&force=1&arg=0";
+    window.location.href = "http://www.weixingate.com/gate.php?back=http://scut.win/views/second.html&force=1&arg=0";
 };
 
 function login(){
