@@ -74,7 +74,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
             datas = str(datas, ENCODING)
             json_datas = urllib.parse.unquote(datas)
             #dict_datas = json.loads(json_datas)
-            print(json_datas)
+            print("!!!!!!!!! json_datas"+json_datas)
             return json_datas
 
     def __response(self, code, content="", type="text/html", btype='text'):
