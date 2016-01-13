@@ -15,7 +15,7 @@ class DbHandler(object):
         self.dictc = None
 
     def connect(self):
-        self.db = MySQLdb.connect(host=DB_HOST, port=DB_PORT, user=DB_USER, passwd=DB_PWD, db=DB_NAME, charset='utf8mb4')
+        self.db = MySQLdb.connect(host=DB_HOST, port=DB_PORT, user=DB_USER, passwd=DB_PWD, db=DB_NAME, charset=DB_ENCODING)
         self.c = self.db.cursor()
         self.dictc = self.db.cursor(MySQLdb.cursors.DictCursor)
 

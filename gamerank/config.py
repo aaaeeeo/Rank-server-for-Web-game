@@ -5,7 +5,7 @@ Created on 2016-1-5
 """
 
 # Genernal
-ENCODING = "utf8mb4"
+ENCODING = "utf8"
 
 # HTTP
 HTTP_HOST = ""
@@ -38,3 +38,4 @@ DB_PORT = 3307
 DB_USER = "root"
 DB_PWD = "7684"
 DB_NAME = "gamerank"
+DB_ENCODING = "utf8mb4"
