@@ -43,13 +43,15 @@
             WgateJs.gate_options={force:1,info:"force"};
             WgateJs.ready=function(){
                 wgateid=WgateJs.getWgateid();
-                            WgateJs.getWgateUser(function(user){
-                                document.getElementById('headimg').src=user.headimgurl;
-                                document.getElementById('name').innerText = user.nickname;
-                                $.post('/create_user.lol',JSON.stringify({user_id: wgateid,game_token:1,user_name:user.nickname,head_image:user.headimgurl}),function(data){
-                                    //if(data)
-                                })
-                            })
+                WgateJs.getWgateUser(function(user){
+                    if(user==null)
+                        window.location.href = "http://www.weixingate.com/gate.php?back=http://scut.win/views/second.html&force=1&info=force";
+                    document.getElementById('headimg').src=user.headimgurl;
+                    document.getElementById('name').innerText = user.nickname;
+                    $.post('/create_user.lol',JSON.stringify({user_id: wgateid,game_token:1,user_name:user.nickname,head_image:user.headimgurl}),function(data){
+                        //if(data)
+                    })
+                })
 
             }
             var u=(("https:" == document.location.protocol) ? "https" : "http") + "://st.weixingate.com/";
