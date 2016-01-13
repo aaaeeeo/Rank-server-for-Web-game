@@ -14,7 +14,7 @@
             WgateJs.auto_auth=true;
             WgateJs.gate_options={force:1,info:"none"};
             WgateJs.ready=function(){
-                /*var wgateid=WgateJs.getWgateid();
+                var wgateid=WgateJs.getWgateid();
                 //alert(wgateid);
                 $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
                     if(data.isexist){
@@ -25,9 +25,9 @@
                     }else{
                         createUser();
                     }
-                })*/
+                })
                 //WgateJs.getWgateUser(function(user){console.info(user);alert(user)});
-                createUser();
+                //createUser();
             }
             var u=(("https:" == document.location.protocol) ? "https" : "http") + "://st.weixingate.com/";
             u=u+'st/1947';//注意每个site这里的数字不一样
