@@ -16,7 +16,7 @@
             WgateJs.ready=function(){
                 var wgateid=WgateJs.getWgateid();
                 //alert(wgateid);
-                $.post('/login.lol',{user_id: wgateid,game_token:1},function(data){
+                $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
                     if(data.isexist){
                         username = data.username;
                             headimg = data.headimage;
