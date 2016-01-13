@@ -124,7 +124,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         #print(content_type)
         static_path = self.__static_dir()
         path = static_path + self.__split_route()
-        print("@@@@@ __get_static.path: "+path)
+        #print("@@@@@ __get_static.path: "+path)
         try:
             content_data = open(path).read()
             type='text'
@@ -147,6 +147,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
                 self.__response(404, "File not found")
         else:
             paras = self.__resolve_paras(type)
+            print("@@@@@ paras: "+paras)
             paras = self.__append_head(paras)
             dbh = self.__get_dbh()
             res_dict = eval(ctl)(dbh, paras)
