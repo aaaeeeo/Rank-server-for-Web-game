@@ -64,9 +64,9 @@ class HTTPHandler(BaseHTTPRequestHandler):
     def __resolve_paras(self, type):
         if type == "GET":
             url_paras = self.__split_paras()
-            print(url_paras)
+            #print(url_paras)
             dict_paras = urllib.parse.parse_qs(url_paras)
-            print(dict_paras)
+            #print(dict_paras)
             return dict_paras
 
         if type == "POST":
@@ -74,7 +74,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
             datas = str(datas, ENCODING)
             json_datas = urllib.parse.unquote(datas)
             dict_datas = json.loads(json_datas)
-            print("!!!!!!!!! json_datas"+json_datas)
+            #print("!!!!!!!!! json_datas"+json_datas)
             return dict_datas
 
     def __response(self, code, content="", type="text/html", btype='text'):
@@ -124,7 +124,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         #print(content_type)
         static_path = self.__static_dir()
         path = static_path + self.__split_route()
-        print(path)
+        print("@@@@@ __get_static.path: "+path)
         try:
             content_data = open(path).read()
             type='text'
@@ -138,7 +138,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         ctl = self.__resolve_route(type)
         #print(ctl)
         if ctl == -1:
-            print("ctl=1")
+            #print("ctl=1")
             try:
                 static = self.__get_static()
                 print(static[1:])
@@ -152,7 +152,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
             res_dict = eval(ctl)(dbh, paras)
             res_json = self.__prepare_response(res_dict)
             #print(res_dict)
-            print(res_json)
+            print("@@@@@ res_json: "+res_json)
             content = res_json
             self.__response(200, content, "application/json", 'text')
 
