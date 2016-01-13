@@ -31,6 +31,9 @@ class HTTPHandler(BaseHTTPRequestHandler):
     def do_POST(self):
         self.process("POST")
 
+    def __all_path(self):
+        return urllib.parse.unquote(self.path, ENCODING)
+
     def __split_route(self):
         if '?' in self.path:
             return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
@@ -114,7 +117,8 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return json.dumps(dict, ensure_ascii=False)
 
     def __get_static(self):
-        ext_name = self.path[self.path.rfind('.'):]
+        #print("__get_static")
+        ext_name = self.__split_route()[self.path.rfind('.'):]
         content_type = TYPE_DEF[ext_name]
         #print(ext_name)
         #print(content_type)
@@ -132,7 +136,9 @@ class HTTPHandler(BaseHTTPRequestHandler):
     def process(self, type):
         #print("!!!!"+str(self.path))
         ctl = self.__resolve_route(type)
+        #print(ctl)
         if ctl == -1:
+            print("ctl=1")
             try:
                 static = self.__get_static()
                 print(static[1:])
