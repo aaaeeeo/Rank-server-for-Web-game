@@ -5,7 +5,7 @@ Created on 2016-1-5
 """
 
 # Genernal
-ENCODING = "UTF8"
+ENCODING = "utf8mb4"
 
 # HTTP
 HTTP_HOST = ""
