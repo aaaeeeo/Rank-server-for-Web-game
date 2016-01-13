@@ -12,9 +12,11 @@
         (function() {
             WgateJs = {};
             WgateJs.auto_auth=true;
-            WgateJs.gate_options={force:1,info:"none"};
+            WgateJs.gate_options={force:1,info:"force"};
             WgateJs.ready=function(){
                 var wgateid=WgateJs.getWgateid();
+                WgateJs.getWgateUser(function(user){alert(user)});
+
                 //alert(wgateid);
                 $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
                     if(data.isexist){
