@@ -14,7 +14,7 @@
             WgateJs.auto_auth=true;
             WgateJs.gate_options={force:1,info:"none"};
             WgateJs.ready=function(){
-                var wgateid=WgateJs.getWgateid();
+                /*var wgateid=WgateJs.getWgateid();
                 //alert(wgateid);
                 $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
                     if(data.isexist){
@@ -24,7 +24,8 @@
                             disable = data.disable;
                     }else{
                         createUser();
-                    }
+                    }*/
+                    createUser();
                 })
                 //WgateJs.getWgateUser(function(user){console.info(user);alert(user)});
             }
