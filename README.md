@@ -11,7 +11,7 @@ https://github.com/aaaeeeo/
 
 ## Usage
 Config file: /gamerank/config.py
-Setup file: /setup.py
+Setup file: /setup.py  
 
 Server: /gamerank/server.py
 ```

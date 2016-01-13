@@ -33,19 +33,20 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
     def __split_route(self):
         if '?' in self.path:
-            return urllib.parse.unquote(self.path.split('?', 1)[0])
+            return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
         else:
-            return self.path
+            return urllib.parse.unquote(self.path, ENCODING)
 
     def __split_paras(self):
         if '?' in self.path:
-            return urllib.parse.unquote(self.path.split('?', 1)[1])
+            return urllib.parse.unquote(self.path.split('?', 1)[1], ENCODING)
         else:
             return ""
 
     def __resolve_route(self, type):
         #print(self.path)
         route = self.__split_route()
+        #print(route)
 
         if route in ROUTE_DEF.keys():
             if ROUTE_DEF[route][0] == type:
@@ -60,13 +61,14 @@ class HTTPHandler(BaseHTTPRequestHandler):
     def __resolve_paras(self, type):
         if type == "GET":
             url_paras = self.__split_paras()
+            print(url_paras)
             dict_paras = urllib.parse.parse_qs(url_paras)
             print(dict_paras)
             return dict_paras
 
         if type == "POST":
             datas = self.rfile.read(int(self.headers['content-length']))
-            datas = str(datas, "utf-8")
+            datas = str(datas, ENCODING)
             json_datas = urllib.parse.unquote(datas)
             dict_datas = json.loads(json_datas)
             print(dict_datas)
@@ -90,9 +92,9 @@ class HTTPHandler(BaseHTTPRequestHandler):
             f.seek(0)
             self.send_header("Content-Length", str(len(content)))
             self.end_headers()
-            shutil.copyfileobj(f,self.wfile)
+            shutil.copyfileobj(f, self.wfile)
         else:
-            self.send_error(code,content)
+            self.send_error(code, content)
 
     def __get_dbh(self):
         if self.__dbh is None:
@@ -128,6 +130,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return content_data, content_type, type
 
     def process(self, type):
+        #print("!!!!"+str(self.path))
         ctl = self.__resolve_route(type)
         if ctl == -1:
             try:

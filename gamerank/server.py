@@ -10,7 +10,7 @@ from config import *
 if __name__ == '__main__':
 
     print("**************************************************")
-    print("** GAMERANK webgame ranking server  VERSION 1.0 **")
+    print("** GAMERANK webgame ranking server  VERSION 1.1 **")
     print("**        Authur: Zuoming Li, Baolin Fan        **")
     print("**************************************************")
     try:
