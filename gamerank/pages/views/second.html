@@ -5,26 +5,49 @@
     <title>title</title>
     <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
     <script src="/javascripts/rank.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript">
+    var username;
+    var headimg;
+    var disable;
         (function() {
             WgateJs = {};
             WgateJs.auto_auth=true;
             WgateJs.gate_options={force:1,info:"force"};
             WgateJs.ready=function(){
                 var wgateid=WgateJs.getWgateid();
-                alert(wgateid);
-                WgateJs.getWgateUser(function(user){console.info(user);alert(JSON.stringify(user))});
+                //alert(wgateid);
+                $.post('login.lol',{user_id: wgateid,game_token:1},function(data){
+                    if(data.isexist){
+                        username = data.username;
+                            headimg = data.headimage;
+                            document.getElementById('headimg').src=headimg;
+                            disable = data.disable;
+                    }else{
+                        WgateJs.gate_options={force:1,info:"force"};
+                        WgateJs.ready=function(){
+                            wgateid=WgateJs.getWgateid();
+                            WgateJs.getWgateUser(function(user){
+                                document.getElementById('headimg').src=headimg;
+                                $.post('create_user.lol',{user_id: wgateid,game_token:1,user_name:user.nickname,head_image:user.headimgurl},function(data){
+                                    //if(data)
+                                })
+                            })
+                        }
+
+                    }
+                })
+                WgateJs.getWgateUser(function(user){console.info(user);alert(user)});
             }
             var u=(("https:" == document.location.protocol) ? "https" : "http") + "://st.weixingate.com/";
             u=u+'st/1947';//注意每个site这里的数字不一样
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
             g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
-        })();
-
+        })();    
     </script>
 </head>
 <body>
 this is the second Page::
+<img id='headimg'>
 </body>
 <script>
     /*var username;
