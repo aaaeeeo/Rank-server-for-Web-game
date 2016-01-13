@@ -147,7 +147,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
                 self.__response(404, "File not found")
         else:
             paras = self.__resolve_paras(type)
-            print("@@@@@ paras: "+paras)
+            print("@@@@@ paras: "+str(paras))
             paras = self.__append_head(paras)
             dbh = self.__get_dbh()
             res_dict = eval(ctl)(dbh, paras)
