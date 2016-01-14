@@ -72,7 +72,6 @@
             g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
     }   */
     function upScore(){
-        var score = document.getElementById('score').value;
         $.post('/upload_score.lol',JSON.stringify({user_id:wgateidTag,game_token:1,score:score}),function(data){
             if(data.success){
                 alert('提交成功！');
@@ -81,13 +80,26 @@
             }
         })
     }
+    function getRanklist(){
+        $.get('/get_rank.lol',JSON.stringify({user_id:wgateid,game_token:1}),function(data){
+            for(o in data){
+                $('#rankList').insertAfter('<div>'+o.user_name+'===='+o.rank+'</div>');
+            }
+        })
+    }
     </script>
 </head>
 <body>
 this is the second Page: <span id="name"></span>
 <img id='headimg'/>
-<input type="text" id="score" />
+<br>
+<input style="height=30px;width=60px" type="text" id="score" />
 <button onclick="upScore()">提交</button>
+<button onclick="getRanklist()">排行榜</button>
+<div>
+    <div id='rankList'>排行榜：</div>
+
+</div>
 </body>
 <script>
     /*var username;
