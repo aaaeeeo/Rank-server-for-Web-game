@@ -81,6 +81,7 @@
         })
     }
     function getRanklist(){
+        alert('1111');
         $.get('/get_rank.lol',JSON.stringify({user_id:wgateid,game_token:1}),function(data){
             for(o in data){
                 $('#rankList').insertAfter('<div>'+o.user_name+'===='+o.rank+'</div>');
