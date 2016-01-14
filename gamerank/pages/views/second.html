@@ -84,8 +84,8 @@
     function getRanklist(){
         alert('1111');
         $.get('/get_rank.lol',{user_id:wgateidTag,game_token:1},function(data){
-            for(o in data){
-                $('<div>'+o.user_name+'===='+o.rank+'</div>').insertAfter('#rankList');
+            for(var i=0;i<data.length-1;i++){
+                $('<div>'+data[i].user_name+'===='+data[i].rank+'</div>').insertAfter('#rankList');
             }
         })
     }
