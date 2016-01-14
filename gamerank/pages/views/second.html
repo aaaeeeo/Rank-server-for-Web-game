@@ -8,12 +8,14 @@
     var username;
     var headimg;
     var disable;
+    var wgateidTag;
         (function() {
             WgateJs = {};
             WgateJs.auto_auth=true;
             WgateJs.gate_options={force:1,info:"none"};
             WgateJs.ready=function(){
                 var wgateid=WgateJs.getWgateid();
+                wgateidTag = wgateid;
                 //WgateJs.getWgateUser(function(user){alert(user)});
                 //alert(wgateid);
                 $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
@@ -69,11 +71,23 @@
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
             g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
     }   */
+    function upScore(){
+        var score = document.getElementById('score').value;
+        $.post('upload_score.lol',JSON.stringify({user_id:wgateidTag,game_token:1,score:score}),function(data){
+            if(data.success){
+                alert('提交成功！')；
+            }else{
+                alert('提交失败！')
+            }
+        })
+    }
     </script>
 </head>
 <body>
 this is the second Page: <span id="name"></span>
 <img id='headimg'>
+<input type="text" id="score" >
+<button onclick="upScore">提交</button>
 </body>
 <script>
     /*var username;
