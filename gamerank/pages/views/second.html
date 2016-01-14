@@ -72,6 +72,7 @@
             g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
     }   */
     function upScore(){
+        var score = document.getElementById('score').value;
         $.post('/upload_score.lol',JSON.stringify({user_id:wgateidTag,game_token:1,score:score}),function(data){
             if(data.success){
                 alert('提交成功！');
