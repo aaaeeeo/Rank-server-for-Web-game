@@ -75,9 +75,9 @@
         var score = document.getElementById('score').value;
         $.post('upload_score.lol',JSON.stringify({user_id:wgateidTag,game_token:1,score:score}),function(data){
             if(data.success){
-                alert('提交成功！')；
+                alert('提交成功！');
             }else{
-                alert('提交失败！')
+                alert('提交失败！');
             }
         })
     }
@@ -85,8 +85,8 @@
 </head>
 <body>
 this is the second Page: <span id="name"></span>
-<img id='headimg'>
-<input type="text" id="score" >
+<img id='headimg'/>
+<input type="text" id="score" />
 <button onclick="upScore">提交</button>
 </body>
 <script>
