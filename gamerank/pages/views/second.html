@@ -19,9 +19,9 @@
                 $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
                     if(data.isexist){
                         username = data.user_name;
-                            headimg = data.head_image;
-				        alert(username);
-                            document.getElementById('headimg').src=headimg;
+                        headimg = data.head_image;
+				        //alert(username);
+                        document.getElementById('headimg').src=headimg;
 			    document.getElementById('name').innerText = username;
                             disable = data.disable;
                     }else{
