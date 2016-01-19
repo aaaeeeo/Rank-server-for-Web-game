@@ -35,10 +35,14 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return urllib.parse.unquote(self.path, ENCODING)
 
     def __split_route(self):
-        if '?' in self.path:
-            return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
-        else:
-            return urllib.parse.unquote(self.path, ENCODING)
+        try:
+            print("@__split_route: "+self.path.split('?', 1)[0])
+            if '?' in self.path:
+                return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
+            else:
+                return urllib.parse.unquote(self.path, ENCODING)
+        except:
+            return self.path.split('?', 1)[0]
 
     def __split_paras(self):
         if '?' in self.path:
