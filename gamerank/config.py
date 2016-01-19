@@ -30,6 +30,7 @@ TYPE_DEF = {
     '.jpg': 'image/jpeg',
     '.png': 'image/png',
     '.gif': 'image/gif',
+    '.mp3': 'audio/mpeg',
     '.jpeg': 'image/jpeg'
 }
 
