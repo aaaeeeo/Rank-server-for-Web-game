@@ -124,8 +124,8 @@ class HTTPHandler(BaseHTTPRequestHandler):
         #print("__get_static")
         print("@@@@@ __get_static.path: "+self.__split_route())
         ext_name = self.__split_route()[self.path.rfind('.'):]
+        print("@@@@@ __get_static.ext: "+ext_name)
         content_type = TYPE_DEF[ext_name]
-        #print(ext_name)
         #print(content_type)
         static_path = self.__static_dir()
         path = static_path + self.__split_route()
