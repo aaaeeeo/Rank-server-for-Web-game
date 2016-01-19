@@ -41,8 +41,9 @@ class HTTPHandler(BaseHTTPRequestHandler):
                 return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
             else:
                 return urllib.parse.unquote(self.path, ENCODING)
-        except:
-            return self.path.split('?', 1)[0]
+        except Exception as e:
+            print("@__split_route: except "+e)
+            return str(self.path.split('?', 1)[0], ENCODING)
 
     def __split_paras(self):
         if '?' in self.path:
