@@ -35,15 +35,11 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return urllib.parse.unquote(self.path, ENCODING)
 
     def __split_route(self):
-        try:
             #print("@__split_route: "+self.path.split('?', 1)[0])
             if '?' in self.path:
                 return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
             else:
                 return urllib.parse.unquote(self.path, ENCODING)
-        except Exception as e:
-            #print("@__split_route: except "+e)
-            return str(self.path.split('?', 1)[0], ENCODING)
 
     def __split_paras(self):
         if '?' in self.path:
@@ -123,9 +119,10 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
     def __get_static(self):
         #print("__get_static")
-        #print("@@@@@ __get_static.path: "+self.__split_route())
-        ext_name = self.__split_route()[self.__split_route().rfind('.'):]
-        #print("@@@@@ __get_static.ext: "+ext_name)
+        print("@@@@@ __get_static.path: "+self.__split_route())
+        route = self.__split_route()
+        ext_name = route[route.rfind('.'):]
+        print("@@@@@ __get_static.ext: "+ext_name)
         content_type = TYPE_DEF[ext_name]
         #print(content_type)
         static_path = self.__static_dir()
@@ -149,7 +146,8 @@ class HTTPHandler(BaseHTTPRequestHandler):
                 static = self.__get_static()
                 print(static[1:])
                 self.__response(200, static[0], static[1], static[2])
-            except:
+            except Exception as e:
+                print("@process: EXCEPTION："+e)
                 self.__response(404, "File not found")
         else:
             paras = self.__resolve_paras(type)
@@ -167,7 +165,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
 if __name__ == '__main__':
 
     try:
-        server = HTTPServer(('', 80), HTTPHandler)
+        server = ThreadingHTTPServer(('', 80), HTTPHandler)
         print('started httpserver...')
         print(server.server_address)
         server.serve_forever()
