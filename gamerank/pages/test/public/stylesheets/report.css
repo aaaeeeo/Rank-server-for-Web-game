@@ -1,0 +1,41 @@
+body {
+
+    font-family: 'microsoft yahei', Arial, sans-serif;
+    background-color: #fffbfb;
+}
+
+input {
+    width: 100%;
+    margin-bottom: 17px;
+    padding: 15px;
+    background-color: #ECF4F4;
+    border-radius: 2px;
+    border: none;
+}
+
+.btn {
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.btn span {
+    font-size: 18px;
+    color: white;
+}
+
+.bd {
+    border: 1px solid #02a2bb;
+}
+
+.list-group-item:hover {
+    background-color: #a4a1c1;
+}
+
+#fixed-div {
+    position: fixed;
+    top: 10em;
+    right: 2em;
+}
+.aFontbg li:hover{
+    background-color:#02a2aa;
+}

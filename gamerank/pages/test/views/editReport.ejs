@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>周报详情</title>
+    <link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/stylesheets/datapicker.css">
+    <link rel="stylesheet" href="/stylesheets/report.css">
+    <script src="/javascripts/bootstrap-datepicker.js"/>
+    <script src="/javascripts/bootstrap.min.js"></script>
+    <script src="/javascripts/jquery-1.10.2.min.js"></script>
+    <script src="/javascripts/dateFormat.js"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-default">
+    <div class="container-fluid" style="padding-right :0px;padding-left: 0px">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="padding-left: 30px; ">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style=" color:#432f31; font-size:25px; font-weight:bold;">我的周报</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
+             style="background: #27d5ff;padding-right: 0px;padding-left: 0px;">
+            <ul class="nav navbar-nav navbar-right" style="color: #101010 ;padding-right: 30px;padding-left: 0px;">
+                <li><a href="/mainpage">编写周报 <span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="/myReport">我的周报</a></li>
+                <li><a href="/loginout">登出</a></li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<div style="border-color: #849fcc; border:1px solid #27d5ff;margin-right: 20%;margin-left: 20%">
+    <div style="float:left;width: 75%;text-align:center;margin-right: 20%;margin-left: 20%">
+        <h3 style="text-align: center">周报信息</h3>
+
+        <div style="text-align: right">
+            <h4 id="dateSelected"><%= rDate %></h4>
+            <h4 id="username"><%= username %></h4></div>
+    </div>
+
+    <div style="width: 100%">
+        <div class="form-group" style="text-align:center;">
+            <p style="font-weight: bold">本周总结:</p>
+
+            <textarea id="sum" class="input-small" name="reportMsg" rows="5" id="msg0" onfocus="iCc(this)"
+                      style="width: 98%;;color: rgb(51, 51, 51);"><%= report.text %></textarea>
+        </div>
+        <div class="form-group" style="text-align:center;">
+            <p style="font-weight: bold">下周计划:</p>
+
+            <textarea id="plan" name="reportMsg2" rows="5" id="msg0" onfocus="iCc(this)"
+                      style="width: 98%;;color: rgb(51, 51, 51);"><%= report.text2 %></textarea>
+        </div>
+        <div class="form-group" style="text-align:center;">
+            <p style="font-weight: bold">存在问题:</p>
+
+            <textarea id="problem" name="reportMsg3" rows="5" id="msg0" onfocus="iCc(this)"
+                      style="width: 98%;color: rgb(51, 51, 51);"><%= report.text3 %></textarea>
+        </div>
+
+    </div>
+</div>
+
+<div style="text-align: center">
+    <br>
+    <button id=<%= report._id %> onclick="saveReport(id);" class="btn btn-info">保存</button>
+    <button id=<%= report._id %> onclick="submitReport(id);" class="btn btn-info">提交</button>
+</div>
+<br>
+
+<div style="text-align: center">
+    <button onclick="window.history.back()" class="btn btn-info">返回上一层</button>
+
+</div>
+<script>
+    function saveReport(reportId) {
+        var text1 = document.getElementById('sum').value;
+        var text2 = document.getElementById('plan').value;
+        var text3 = document.getElementById('problem').value;
+        var reportId = reportId;
+        $.post('/editSave', {
+                    text1: text1,
+                    text2: text2,
+                    text3: text3,
+                    reportId: reportId
+                },
+                function (data) {
+                    if (data.isSuccess) {
+                        alert('保存成功');
+                    }
+                })
+    }
+    function submitReport(reportId) {
+        window.location.href = '/submitReport?reportId=' + reportId;
+    }
+</script>
+</body>
+</html>
