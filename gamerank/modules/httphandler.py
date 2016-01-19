@@ -36,13 +36,13 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
     def __split_route(self):
         try:
-            print("@__split_route: "+self.path.split('?', 1)[0])
+            #print("@__split_route: "+self.path.split('?', 1)[0])
             if '?' in self.path:
                 return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
             else:
                 return urllib.parse.unquote(self.path, ENCODING)
         except Exception as e:
-            print("@__split_route: except "+e)
+            #print("@__split_route: except "+e)
             return str(self.path.split('?', 1)[0], ENCODING)
 
     def __split_paras(self):
@@ -123,9 +123,9 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
     def __get_static(self):
         #print("__get_static")
-        print("@@@@@ __get_static.path: "+self.__split_route())
+        #print("@@@@@ __get_static.path: "+self.__split_route())
         ext_name = self.__split_route()[self.__split_route().rfind('.'):]
-        print("@@@@@ __get_static.ext: "+ext_name)
+        #print("@@@@@ __get_static.ext: "+ext_name)
         content_type = TYPE_DEF[ext_name]
         #print(content_type)
         static_path = self.__static_dir()
@@ -140,11 +140,11 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return content_data, content_type, type
 
     def process(self, type):
-        print("@process: "+str(self.path))
+        #print("@process: "+str(self.path))
         ctl = self.__resolve_route(type)
         #print(ctl)
         if ctl == -1:
-            print("@process: ctl==-1")
+            #print("@process: ctl==-1")
             try:
                 static = self.__get_static()
                 print(static[1:])
