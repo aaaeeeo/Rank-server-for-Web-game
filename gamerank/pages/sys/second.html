@@ -16,6 +16,8 @@
         $.mobile.loader.prototype.options.textVisible = false;
         $.mobile.loader.prototype.options.theme = "a";
         $.mobile.loader.prototype.options.html = "";
+
+        $.mobile.loading( "show" );
     });
 </script>
     <script src="../javascripts/jquery.mobile-1.4.5.js"></script>
@@ -60,6 +62,8 @@
             u=u+'st/1947';//注意每个site这里的数字不一样
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
             g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
+
+            $.mobile.loading( "hide" );
         })();
     /*
         function createUser(){
