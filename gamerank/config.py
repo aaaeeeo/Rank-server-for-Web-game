@@ -28,6 +28,8 @@ TYPE_DEF = {
     '.js': 'application/x-javascript',
     '.ico': 'image/x-icon',
     '.jpg': 'image/jpeg',
+    '.png': 'image/png',
+    '.gif': 'image/gif',
     '.jpeg': 'image/jpeg'
 }
 
