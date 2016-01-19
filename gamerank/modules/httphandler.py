@@ -167,7 +167,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
 if __name__ == '__main__':
 
     try:
-        server = ThreadingHTTPServer(('', 80), HTTPHandler)
+        server = HTTPServer(('', 80), HTTPHandler)
         print('started httpserver...')
         print(server.server_address)
         server.serve_forever()
