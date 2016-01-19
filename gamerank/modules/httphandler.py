@@ -147,7 +147,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
                 print(static[1:])
                 self.__response(200, static[0], static[1], static[2])
             except Exception as e:
-                print("@process: EXCEPTION："+repr(e))
+                print("!!!!@@@@@ process: EXCEPTION："+repr(e)+" !!!!")
                 self.__response(404, "File not found")
         else:
             paras = self.__resolve_paras(type)
