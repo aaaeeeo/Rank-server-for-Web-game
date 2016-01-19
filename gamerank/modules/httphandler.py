@@ -122,6 +122,7 @@ class HTTPHandler(BaseHTTPRequestHandler):
         content_type = TYPE_DEF[ext_name]
         #print(ext_name)
         #print(content_type)
+        print("@@@@@ __get_static.path: "+self.__split_route())
         static_path = self.__static_dir()
         path = static_path + self.__split_route()
         print("@@@@@ __get_static.path: "+path)
@@ -134,11 +135,11 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return content_data, content_type, type
 
     def process(self, type):
-        #print("!!!!"+str(self.path))
+        print("@process: "+str(self.path))
         ctl = self.__resolve_route(type)
         #print(ctl)
         if ctl == -1:
-            #print("ctl=1")
+            print("@process: ctl==-1")
             try:
                 static = self.__get_static()
                 print(static[1:])
