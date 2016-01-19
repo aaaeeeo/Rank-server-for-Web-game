@@ -118,11 +118,11 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
     def __get_static(self):
         #print("__get_static")
+        print("@@@@@ __get_static.path: "+self.__split_route())
         ext_name = self.__split_route()[self.path.rfind('.'):]
         content_type = TYPE_DEF[ext_name]
         #print(ext_name)
         #print(content_type)
-        print("@@@@@ __get_static.path: "+self.__split_route())
         static_path = self.__static_dir()
         path = static_path + self.__split_route()
         print("@@@@@ __get_static.path: "+path)
