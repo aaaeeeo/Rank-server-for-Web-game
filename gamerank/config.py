@@ -32,7 +32,7 @@ TYPE_DEF = {
     '.gif': 'image/gif',
     '.mp3': 'audio/mpeg',
     '.jpeg': 'image/jpeg',
-    '.svg': 'image/svg'
+    '.svg': 'image/svg+xml'
 }
 
 # DB
