@@ -31,7 +31,8 @@ TYPE_DEF = {
     '.png': 'image/png',
     '.gif': 'image/gif',
     '.mp3': 'audio/mpeg',
-    '.jpeg': 'image/jpeg'
+    '.jpeg': 'image/jpeg',
+    '.svg': 'image/svg'
 }
 
 # DB
