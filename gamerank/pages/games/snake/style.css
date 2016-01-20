@@ -1,0 +1,55 @@
+div.info{
+	margin-bottom: 10px;
+	width: 500px;
+	height: 30px;
+}
+
+div.info input[type="button"]{
+	float:left;
+}
+
+div.info > div{
+	margin-left: 5px;
+	float:right;
+}
+
+div#gboard {
+	width: 500px;
+	height: 500px;
+	border: 1px solid #ababab;
+}
+
+#gboard div{
+	width: 10px;
+	height: 10px;
+	box-sizing: border-box;
+	float: left;
+}
+
+#gboard div.glow{
+	background-color: green;
+}
+
+#gboard div.food{
+    background-color: red;
+	border-radius: 10px;
+	animation: pulse 5s infinite;
+    -webkit-animation: pulse .5s infinite alternate;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
