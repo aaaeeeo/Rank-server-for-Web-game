@@ -35,10 +35,11 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return urllib.parse.unquote(self.path, ENCODING)
 
     def __split_route(self):
-        if '?' in self.path:
-            return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
-        else:
-            return urllib.parse.unquote(self.path, ENCODING)
+            #print("@__split_route: "+self.path.split('?', 1)[0])
+            if '?' in self.path:
+                return urllib.parse.unquote(self.path.split('?', 1)[0], ENCODING)
+            else:
+                return urllib.parse.unquote(self.path, ENCODING)
 
     def __split_paras(self):
         if '?' in self.path:
@@ -118,13 +119,15 @@ class HTTPHandler(BaseHTTPRequestHandler):
 
     def __get_static(self):
         #print("__get_static")
-        ext_name = self.__split_route()[self.path.rfind('.'):]
+        print("@@@@@ __get_static.path: "+self.__split_route())
+        route = self.__split_route()
+        ext_name = route[route.rfind('.'):]
+        print("@@@@@ __get_static.ext: "+ext_name)
         content_type = TYPE_DEF[ext_name]
-        #print(ext_name)
         #print(content_type)
         static_path = self.__static_dir()
         path = static_path + self.__split_route()
-        print("@@@@@ __get_static.path: "+path)
+        print("@@@@@ __get_static.parse path: "+path)
         try:
             content_data = open(path).read()
             type='text'
@@ -134,16 +137,17 @@ class HTTPHandler(BaseHTTPRequestHandler):
         return content_data, content_type, type
 
     def process(self, type):
-        #print("!!!!"+str(self.path))
+        #print("@process: "+str(self.path))
         ctl = self.__resolve_route(type)
         #print(ctl)
         if ctl == -1:
-            #print("ctl=1")
+            #print("@process: ctl==-1")
             try:
                 static = self.__get_static()
                 print(static[1:])
                 self.__response(200, static[0], static[1], static[2])
-            except:
+            except Exception as e:
+                print("!!!!@@@@@ process: EXCEPTION："+repr(e)+" !!!!")
                 self.__response(404, "File not found")
         else:
             paras = self.__resolve_paras(type)

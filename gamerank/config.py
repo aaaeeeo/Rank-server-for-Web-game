@@ -28,7 +28,11 @@ TYPE_DEF = {
     '.js': 'application/x-javascript',
     '.ico': 'image/x-icon',
     '.jpg': 'image/jpeg',
-    '.jpeg': 'image/jpeg'
+    '.png': 'image/png',
+    '.gif': 'image/gif',
+    '.mp3': 'audio/mpeg',
+    '.jpeg': 'image/jpeg',
+    '.svg': 'image/svg+xml'
 }
 
 # DB

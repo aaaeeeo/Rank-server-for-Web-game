@@ -1,5 +1,5 @@
-# Rank-server-for-Web-game
-A python web server for host web games with ranking service
+# Web Game Ranking Module
+Python web server and web page framework of ranking feature for web games
 
 ## Contributors
 **Baolin Fan**   
@@ -9,7 +9,17 @@ https://github.com/finmily
 zuomingli@uchicago.edu  
 https://github.com/aaaeeeo/  
 
+## Description
+### Server
+Python server developed base on `BaseHTTPServer`
+With features:
+1. Handle GET and POST request, acquire parameters and response data by json
+2. Read specific static file and response to GET request
+3. Connect to MySQL with ranking logic and logging
+4. Separate config file
+
 ## Usage
+### Server
 Config file: /gamerank/config.py
 Setup file: /setup.py  
 
