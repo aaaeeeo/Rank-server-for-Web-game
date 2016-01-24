@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>title</title>
+    <link rel="stylesheet" href="../stylesheets/jquery.mobile-1.4.5.css"/>
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+     $(document).bind('mobileinit',function(){
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+
+        $.mobile.loader.prototype.options.text = "loading";
+        $.mobile.loader.prototype.options.textVisible = false;
+        $.mobile.loader.prototype.options.theme = "a";
+        $.mobile.loader.prototype.options.html = "";
+
+        $.mobile.loading( "show" );
+    });
+</script>
+    <script src="../javascripts/jquery.mobile-1.4.5.js"></script>
+<script type="text/javascript">
+/*    var username;
+    var headimg;
+    var disable;
+    var wgateidTag;
+        (function() {
+            $.mobile.loading( "show" );
+            WgateJs = {};
+            WgateJs.auto_auth=true;
+            WgateJs.gate_options={force:1,info:"none"};
+            WgateJs.ready=function(){
+                var wgateid=WgateJs.getWgateid();
+                wgateidTag = wgateid;
+                //WgateJs.getWgateUser(function(user){alert(user)});
+                //alert(wgateid);
+                $.post('/login.lol',JSON.stringify({user_id: wgateid,game_token:1}),function(data){
+                    if(data.isexist){
+                        username = data.user_name;
+                        headimg = data.head_image;
+				        //alert(username);
+                        document.getElementById('headimg').src=headimg;
+			    document.getElementById('name').innerText = username;
+                            disable = data.disable;
+                    }else{
+                        WgateJs.getWgateUser(function(user){
+                    if(user==null)
+                        window.location.href = "http://www.weixingate.com/gate.php?back=http://scut.win/sys/second.html&force=1&info=force";
+                    document.getElementById('headimg').src=user.headimgurl;
+                    document.getElementById('name').innerText = user.nickname;
+                    $.post('/create_user.lol',JSON.stringify({user_id: wgateid,game_token:1,user_name:user.nickname,head_image:user.headimgurl}),function(data){
+                        //if(data)
+                    })
+                })
+                    }
+                })
+                //WgateJs.getWgateUser(function(user){console.info(user);alert(user)});
+                //createUser();
+            }
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://st.weixingate.com/";
+            u=u+'st/1947';//注意每个site这里的数字不一样
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+            g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
+
+            $.mobile.loading( "hide" );
+        })();*/
+    /*
+        function createUser(){
+           // alert("createUser()");
+        WgateJs = {};
+            WgateJs.auto_auth=true;
+            WgateJs.gate_options={force:1,info:"force"};
+            WgateJs.ready=function(){
+                wgateid=WgateJs.getWgateid();
+                WgateJs.getWgateUser(function(user){
+                    if(user==null)
+                        alert("null")
+                       //window.location.href = "http://www.weixingate.com/gate.php?back=http://scut.win/views/second.html&force=1&info=force";
+                    document.getElementById('headimg').src=user.headimgurl;
+                    document.getElementById('name').innerText = user.nickname;
+                    $.post('/create_user.lol',JSON.stringify({user_id: wgateid,game_token:1,user_name:user.nickname,head_image:user.headimgurl}),function(data){
+                        //if(data)
+                    })
+                })
+
+            }
+            var u=(("https:" == document.location.protocol) ? "https" : "http") + "://st.weixingate.com/";
+            u=u+'st/1947';//注意每个site这里的数字不一样
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+            g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
+    }   */
+    function upScore(){
+        var score = document.getElementById('score').value;
+        $.post('/upload_score.lol',JSON.stringify({user_id:wgateidTag,game_token:1,score:score}),function(data){
+            if(data.success){
+                alert('提交成功！');
+            }else{
+                alert('提交失败！');
+            }
+        })
+    }
+    function getRanklist(){
+        alert('1111');
+        $.get('/get_rank.lol',{user_id:wgateidTag,game_token:1},function(data){
+            for(var i=0;i<data.length;i++){
+                $('<div>'+data[i].user_name+'===='+data[i].rank+'</div>').insertAfter('#rankList');
+            }
+        })
+    }
+    </script>
+</head>
+<body>
+<span id="name"></span>
+<img id='headimg' width="50px" height="50px"/>
+<!-- <br> -->
+<input style="height=30px;width=60px" type="text" id="score" />
+<button onclick="upScore()">提交</button>
+<button onclick="getRanklist()">排行榜</button>
+<!-- <div data-role="header">
+<div data-role="navbar">
+      <ul>
+        <li><a href="#" data-icon="home">首页</a></li>
+        <li><a href="#" data-icon="arrow-r">页面二</a></li>
+        <li><a href="#" data-icon="search">搜索</a></li>
+      </ul>
+    </div>
+<div> -->
+<iframe src="../games/memory/index.html" width="100%" scrolling="no"></iframe>
+</div>
+    <div id='rankList'>排行榜：</div>
+    <a href="rankDialog.html" data-rel="dialog" data-transition="pop">排行榜</a>
+</div>
+</body>
+<script>
+    /*var username;
+    var headimg;
+    var disable;
+    $(document).ready(function () {
+                document.getElementsByTagName('body')[0].innerHTML += window.location.href.toString();
+                //alert(window.location.href);
+                //var wgateid = GetQueryString("wgateid");
+                var wgateid = "oXQ7gt9aM1hynR6j6J1Hp5PTB9EQ";
+                $.post('login.lol', {wgateid: wgateid}, function (data) {
+                    if (data == null) {
+                        alert('server error!');
+                    } else {
+                        if (data.isexist) {
+                            username = data.username;
+                            headimg = data.headimage;
+                            disable = data.disable;
+                        } else {
+                            window.location.href = "http://www.weixingate.com/gate.php?back=http://192.168.31.145;3000/third&force=1&info=force"
+                        }
+                    }
+                })
+            }
+    )*/
+</script>
+</html>
