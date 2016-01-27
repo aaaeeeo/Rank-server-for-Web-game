@@ -55,10 +55,10 @@
                     })
                 })
                     }
-                })
+                });
                 //WgateJs.getWgateUser(function(user){console.info(user);alert(user)});
                 //createUser();
-            }
+            };
             var u=(("https:" == document.location.protocol) ? "https" : "http") + "://st.weixingate.com/";
             u=u+'st/1947';//注意每个site这里的数字不一样
             var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
@@ -118,15 +118,6 @@
 <input style="height=30px;width=60px" type="text" id="score" />
 <button onclick="upScore()">提交</button>
 <button onclick="getRanklist()">排行榜</button>
-<!-- <div data-role="header">
-<div data-role="navbar">
-      <ul>
-        <li><a href="#" data-icon="home">首页</a></li>
-        <li><a href="#" data-icon="arrow-r">页面二</a></li>
-        <li><a href="#" data-icon="search">搜索</a></li>
-      </ul>
-    </div>
-<div> -->
 <iframe src="../games/memory/index.html" width="100%" scrolling="no"></iframe>
 </div>
     <div id='rankList'>排行榜：</div>
