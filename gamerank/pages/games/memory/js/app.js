@@ -74,7 +74,7 @@
             $tries.html(tries);
 
             if ($('.matched').length != $pieces.length) {
-                $.mobile.changePage( "rankDialog.html", { role: "dialog" } )
+                $.mobile.changePage( "rankDialog.html", { role: "dialog" } );
                 /*if (window.confirm('Congrats! You won with only ' + tries + ' tries. Not bad! Play again?')) {
 
                     populateBoard();
