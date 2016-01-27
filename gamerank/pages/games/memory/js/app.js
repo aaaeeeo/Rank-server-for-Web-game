@@ -74,6 +74,7 @@
             $tries.html(tries);
 
             if ($('.matched').length != $pieces.length) {
+                $("#dialog").popup();
                 $("#dialog").popup("open");
 
                 /*if (window.confirm('Congrats! You won with only ' + tries + ' tries. Not bad! Play again?')) {
