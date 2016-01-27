@@ -31,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="rankDialog.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="rankDialog.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/sys/rankDialog.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875">
-              <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.01655629">
+              <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -85,10 +85,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/games/memory/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33222592">
+            <state vertical-scroll-proportion="-11.111111">
               <caret line="76" column="36" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -111,9 +111,9 @@
       <list>
         <option value="$PROJECT_DIR$/javascripts/app.js" />
         <option value="$PROJECT_DIR$/sys/second.html" />
-        <option value="$PROJECT_DIR$/sys/rankDialog.html" />
         <option value="$PROJECT_DIR$/games/memory/index.html" />
         <option value="$PROJECT_DIR$/games/memory/js/app.js" />
+        <option value="$PROJECT_DIR$/sys/rankDialog.html" />
       </list>
     </option>
   </component>
@@ -356,24 +356,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sys/second.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.75">
-          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="65" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sys/rankDialog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/javascripts/rank.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -402,11 +384,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/games/memory/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33222592">
+        <state vertical-scroll-proportion="-11.111111">
           <caret line="76" column="36" selection-start-line="76" selection-start-column="36" selection-end-line="76" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sys/second.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.75">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="65" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sys/rankDialog.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.01655629">
+          <caret line="1" column="21" selection-start-line="1" selection-start-column="21" selection-end-line="1" selection-end-column="21" />
+          <folding />
         </state>
       </provider>
     </entry>
