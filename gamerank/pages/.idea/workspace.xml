@@ -44,8 +44,8 @@
       <file leaf-file-name="second.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sys/second.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-16.5">
-              <caret line="124" column="6" selection-start-line="124" selection-start-column="6" selection-end-line="124" selection-end-column="6" />
+            <state vertical-scroll-proportion="-15.875">
+              <caret line="123" column="4" selection-start-line="123" selection-start-column="4" selection-end-line="123" selection-end-column="77" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -78,8 +78,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/games/memory/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.125">
-              <caret line="24" column="35" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="35" />
+            <state vertical-scroll-proportion="-12.75">
+              <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -88,8 +88,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/games/memory/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5016611">
-              <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.5182724">
+              <caret line="76" column="53" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -110,8 +110,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/sys/second.html" />
-        <option value="$PROJECT_DIR$/games/memory/index.html" />
         <option value="$PROJECT_DIR$/javascripts/app.js" />
+        <option value="$PROJECT_DIR$/games/memory/index.html" />
         <option value="$PROJECT_DIR$/games/memory/js/app.js" />
       </list>
     </option>
@@ -355,21 +355,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascripts/rank.js">
+    <entry file="file://$PROJECT_DIR$/games/memory/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sys/second.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-16.5">
-          <caret line="124" column="6" selection-start-line="124" selection-start-column="6" selection-end-line="124" selection-end-column="6" />
+        <state vertical-scroll-proportion="-15.875">
+          <caret line="123" column="4" selection-start-line="123" selection-start-column="4" selection-end-line="123" selection-end-column="77" />
           <folding>
             <element signature="n#style#0;n#input#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascripts/rank.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -383,26 +391,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/games/memory/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/games/memory/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.125">
-          <caret line="24" column="35" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="35" />
+        <state vertical-scroll-proportion="-12.75">
+          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="46" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/games/memory/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5016611">
-          <caret line="75" column="38" selection-start-line="75" selection-start-column="38" selection-end-line="75" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.5182724">
+          <caret line="76" column="53" selection-start-line="76" selection-start-column="53" selection-end-line="76" selection-end-column="53" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
