@@ -74,6 +74,7 @@
             $tries.html(tries);
 
             if ($('.matched').length != $pieces.length) {
+                $("#dialog").trigger("create")
                 $("#dialog").popup();
                 $("#dialog").popup("open");
 
