@@ -47,7 +47,7 @@ function add(){
 }
 
 function upScore(){
-    var score = document.getElementById('score').value;
+    var score = $("#score").text;
     $.post('/upload_score.lol',JSON.stringify({user_id:wgateidTag,game_token:1,score:score}),function(data){
         if(data.success){
             alert('提交成功！');
@@ -72,7 +72,10 @@ function load(){
     getRanklist();
 }
     $(document).ready(function(){
-        add();
 
+        $("#dialog").load("/sys/rankDialog.html");
     });
+$(window).load(function(){
+    add();
+});
 //$('.new-game').on('click', rankList);
