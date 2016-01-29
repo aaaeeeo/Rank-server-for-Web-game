@@ -5,7 +5,9 @@ var username;
 var headimg;
 var disable;
 var wgateidTag;
+var locationUrl;
 function add(){
+    locationUrl=location.href;
     $.mobile.loading("show");
     WgateJs = {};
     WgateJs.auto_auth=true;
@@ -26,7 +28,7 @@ function add(){
             }else{
                 WgateJs.getWgateUser(function(user){
                     if(user==null)
-                        window.location.href = "http://www.weixingate.com/gate.php?back=http://scut.win/sys/second.html&force=1&info=force";
+                        window.location.href = "http://www.weixingate.com/gate.php?back="+locationUrl+"&force=1&info=force";
                     document.getElementById('headimg').src=user.headimgurl;
                     document.getElementById('name').innerText = user.nickname;
                     $.post('/create_user.lol',JSON.stringify({user_id: wgateid,game_token:1,user_name:user.nickname,head_image:user.headimgurl}),function(data){
@@ -42,6 +44,25 @@ function add(){
     g.defer=true; g.async=true; g.src=u; s.parentNode.insertBefore(g,s);
 
     $.mobile.loading( "hide" );
+}
+
+function upScore(){
+    var score = document.getElementById('score').value;
+    $.post('/upload_score.lol',JSON.stringify({user_id:wgateidTag,game_token:1,score:score}),function(data){
+        if(data.success){
+            alert('提交成功！');
+        }else{
+            alert('提交失败！');
+        }
+    })
+}
+
+function getRanklist(){
+    $.get('/get_rank.lol',{user_id:wgateidTag,game_token:1},function(data){
+        for(var i=0;i<data.length;i++){
+            $('<div>'+data[i].user_name+'===='+data[i].rank+'</div>').insertAfter('#rankList');
+        }
+    })
 }
 function rankList(){
 
