@@ -1,14 +1,23 @@
 
-<script src="../javascripts/app.js">
+<script src="../javascripts/app.js"/>
 
+<script>
+	$(document).ready(function(){
+		add();
+		upScore();
+		getRanklist();
+	});
 </script>
 <div data-role="popup" id="confirmDialog"  data-dismissible="false">
 	<div data-role="header" data-theme="a" class="ui-corner-top">
 		<h1>Delete Page?</h1>
 	</div>
-	<div data-role="main" class="ui-content">
+	< data-role="main" class="ui-content">
 		<h3 class="ui-title">you scores</h3>
 		you have try <p id="score"></p>
+		<div id="name"></div>
+		<img id="headimg">
+		<div id="rankList"></div>
 		<a href="#" data-role="button" data-inline="true" data-rel="back" data-theme="c">Cancel</a>
 		<a href="#" data-role="button" data-inline="true" data-rel="back" data-transition="flow" data-theme="b">Delete</a>
 	</div>
