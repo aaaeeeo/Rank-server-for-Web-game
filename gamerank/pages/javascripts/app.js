@@ -68,9 +68,9 @@ function rankList(){
 
 }
 
-    $(document).ready(function(){
+function load(){
         add();
         upScore();
         getRanklist();
-    });
+}
 //$('.new-game').on('click', rankList);

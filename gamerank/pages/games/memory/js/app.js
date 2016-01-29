@@ -77,6 +77,7 @@
                 $("#confirmDialog").popup();
                 $("#confirmDialog").popup("open");
                 $("#score").text(tries.toString());
+                load();
                 $("#confirmDialog").trigger('create');
 
                 /*if (window.confirm('Congrats! You won with only ' + tries + ' tries. Not bad! Play again?')) {
