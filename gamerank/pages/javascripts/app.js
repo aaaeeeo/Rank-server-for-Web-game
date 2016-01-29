@@ -48,6 +48,7 @@ function add(){
 
 function upScore(){
     var score = $("#score").text;
+    alert(score);
     $.post('/upload_score.lol',JSON.stringify({user_id:wgateidTag,game_token:1,score:score}),function(data){
         if(data.success){
             alert('提交成功！');
