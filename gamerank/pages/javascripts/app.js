@@ -67,4 +67,10 @@ function getRanklist(){
 function rankList(){
 
 }
-$('.new-game').on('click', rankList);
+
+    $(document).ready(function(){
+        add();
+        upScore();
+        getRanklist();
+    });
+//$('.new-game').on('click', rankList);
