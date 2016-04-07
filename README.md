@@ -11,8 +11,8 @@ https://github.com/aaaeeeo/
 
 ## Description
 ### Server
-Python server developed base on `BaseHTTPServer`
-With features:
+Python server developed base on `BaseHTTPServer`  
+With features:  
 1. Handle GET and POST request, acquire parameters and response data by json  
 2. Read specific static file and response to GET request  
 3. Connect to MySQL with ranking logic and logging    
